@@ -1,8 +1,8 @@
 # TAIWAN-CA INC. CYBER Certification Authority Certificate Policy and Certification Practice Statement (TWCA CYBER CA CP/CPS)
 
-**(Version 2.3)**
+**(Version 2.3.1)**
 
-Effective Date: 2026/10/31
+Effective Date: 2026/11/1
 
 ## Document History
 
@@ -14,6 +14,7 @@ Effective Date: 2026/10/31
 | 2.0.1 | November 15, 2025 | 3.2.2: Added validation record validity periods. 3.2.2.4, 3.2.2.5, 3.2.2.8, 3.2.2.9: Adjusted domain validation methods and added MPIC and DNSSEC requirements. 3.3.1, 6.3.2: Added certificate validity period limits. 5.7.1.2: Added mass revocation plan. 7.1.4.3.1: Tabulated certificate names. |
 | 2.2 | June 8, 2026 | Merged CP/CPS and added international compliance declarations. 3.2.2: Removed unused validation methods, added long-lived validation methods, and tabulated them. 3.2.2.8, 4.2.4: Disclosed CAA parameter (`accounturi`, `validationmethods`) processing per Ballot SC-098v2. 4.1, 4.3, 4.7, 4.9: Added ACME automation. 5.2: Added developer role. 6.7: Added vulnerability response and remediation timelines. |
 | 2.3 | October 31, 2026 | Revised in accordance with root program review comments and the latest CA/Browser Forum requirements; added the TWCA CYBER Root CA G3 certificate hierarchy. |
+| 2.3.1 | November 1, 2026 | 7.1.2.2, 7.1.4.3.2, 7.1.4.3.3: Added the Cross Certificate issued by TWCA CYBER Root CA to TWCA CYBER Root CA G3, and the Cross Certificate re-issued by TWCA Global Root CA to TWCA CYBER Root CA on October 31, 2026; added the date of issuance to the Cross Certificate table. |
 
 ## Summary
 
@@ -1935,7 +1936,7 @@ For Subordinate CA certificates issued by this Certification Center, their exten
 
 Extensions other than those listed above are not used by this Certification Center.
 
-The following two Cross Certificates listed in Section 7.1.4.3.2 were issued before BR version 2.0.0 took effect on September 15, 2023 (the certificate issued by TWCA Root Certification Authority to TWCA Global Root CA on October 28, 2014, and the certificate issued by TWCA Global Root CA to TWCA CYBER Root CA on December 9, 2022) and retain their original content: their basicConstraints extension sets cA to true and does not set pathLenConstraint; they contain no extKeyUsage extension; their certificatePolicies extension contains only anyPolicy with an id-qt-cps qualifier; and their authorityInformationAccess extension contains only the id-ad-ocsp access method. Cross Certificates issued on or after September 15, 2023, including the Cross Certificate issued by TWCA Global Root CA to TWCA CYBER Root CA G3, conform to this section.
+The following two Cross Certificates listed in Section 7.1.4.3.2 were issued before BR version 2.0.0 took effect on September 15, 2023 (the certificate issued by TWCA Root Certification Authority to TWCA Global Root CA on October 28, 2014, and the certificate issued by TWCA Global Root CA to TWCA CYBER Root CA on December 9, 2022) and retain their original content: their basicConstraints extension sets cA to true and does not set pathLenConstraint; they contain no extKeyUsage extension; their certificatePolicies extension contains only anyPolicy with an id-qt-cps qualifier; and their authorityInformationAccess extension contains only the id-ad-ocsp access method. Cross Certificates issued on or after September 15, 2023, including the Cross Certificate issued by TWCA Global Root CA to TWCA CYBER Root CA G3, the Cross Certificate issued by TWCA CYBER Root CA to TWCA CYBER Root CA G3, and the Cross Certificate issued by TWCA Global Root CA to TWCA CYBER Root CA on October 31, 2026, conform to this section.
 
 The Subordinate CA certificate "TWCA Global EVSSL Certification Authority" listed in Section 7.1.4.3.1 was issued by TWCA Global Root CA on August 23, 2012 and retains its original content: it contains no extKeyUsage extension; its certificatePolicies extension contains only anyPolicy with an id-qt-cps qualifier; and its authorityInformationAccess extension contains only the id-ad-ocsp access method.
 
@@ -2082,11 +2083,13 @@ The trust paths and scope of applicability of the certificate hierarchy governed
 
 To extend the compatibility of the trust path, this Certification Center also issues the following Cross Certificates:
 
-| Subject of the Cross Certificate | Issuer of the Cross Certificate |
-|---|---|
-| TWCA CYBER Root CA | TWCA Global Root CA |
-| TWCA CYBER Root CA G3 | TWCA Global Root CA |
-| TWCA Global Root CA | TWCA Root Certification Authority |
+| Subject of the Cross Certificate | Issuer of the Cross Certificate | Date of Issuance |
+|---|---|---|
+| TWCA CYBER Root CA | TWCA Global Root CA | December 9, 2022 |
+| TWCA CYBER Root CA | TWCA Global Root CA | October 31, 2026 |
+| TWCA CYBER Root CA G3 | TWCA Global Root CA | October 30, 2026 |
+| TWCA CYBER Root CA G3 | TWCA CYBER Root CA | October 31, 2026 |
+| TWCA Global Root CA | TWCA Root Certification Authority | October 28, 2014 |
 
 **Scope of applicability**
 
@@ -2096,13 +2099,13 @@ The remaining Subordinate CA certificates listed in [Section 7.1.4.3.1](#71431-s
 
 ##### 7.1.4.3.3 Transition of multi-Trust-Purpose Root CA certificates to single-purpose operation
 
-"TWCA CYBER Root CA" and "TWCA CYBER Root CA G3", the trust anchors governed by this Statement, are dedicated to a single Trust Purpose and issue only the TLS Subordinate CA certificates covered by this Statement and the OCSP Delegated Responder certificates of each such Root CA.
+"TWCA CYBER Root CA" and "TWCA CYBER Root CA G3", the trust anchors governed by this Statement, are dedicated to a single Trust Purpose and issue only the TLS Subordinate CA certificates covered by this Statement (including the Cross Certificate issued by "TWCA CYBER Root CA" to "TWCA CYBER Root CA G3" listed in Section 7.1.4.3.2) and the OCSP Delegated Responder certificates of each such Root CA.
 
 "TWCA Global Root CA" is the issuer of the Cross Certificates for "TWCA CYBER Root CA" and "TWCA CYBER Root CA G3", and "TWCA Root Certification Authority" is the issuer of the Cross Certificate for "TWCA Global Root CA". In addition to the TLS Trust Purposes covered by this Statement, those two Root CA certificates are the starting point of the trust path for other hierarchies operated by the Company, whose operational practices are set out in the Certificate Policy and Certification Practice Statement that the Company publishes separately for each such Trust Purpose.
 
 This Certification Center transitions those two Root CA certificates to single-purpose operation as follows:
 
-1. Newly issued TLS Subordinate CA certificates are issued exclusively from "TWCA CYBER Root CA" or "TWCA CYBER Root CA G3". Effective June 15, 2026, the trust path for TLS certificates uses "TWCA CYBER Root CA" as the trust anchor; "TWCA Global Root CA" and "TWCA Root Certification Authority" no longer issue certificates for TLS purposes, except that "TWCA Global Root CA" issues the Cross Certificate for "TWCA CYBER Root CA G3" listed in Section 7.1.4.3.2, as required for root CA succession by Section 1.3.1.1 of the Chrome Root Program Policy. That Cross Certificate conforms to Section 7.1.2.2 and asserts only the `id-kp-serverAuth` Extended Key Usage.
+1. Newly issued TLS Subordinate CA certificates are issued exclusively from "TWCA CYBER Root CA" or "TWCA CYBER Root CA G3". Effective June 15, 2026, the trust path for TLS certificates uses "TWCA CYBER Root CA" as the trust anchor; "TWCA Global Root CA" and "TWCA Root Certification Authority" no longer issue certificates for TLS purposes, except that "TWCA Global Root CA" issues the Cross Certificate for "TWCA CYBER Root CA G3" listed in Section 7.1.4.3.2, as required for root CA succession by Section 1.3.1.1 of the Chrome Root Program Policy, and on October 31, 2026 re-issued the Cross Certificate for "TWCA CYBER Root CA" listed in that Section. Those Cross Certificates conform to Section 7.1.2.2 and assert only the `id-kp-serverAuth` Extended Key Usage.
 2. Trust paths are progressively migrated to the dedicated hierarchies referred to in item 1, and, by December 31, 2028, one of the trust bits of "TWCA Root Certification Authority" and "TWCA Global Root CA" is removed, or those root certificates are sunset; the related requests are submitted to the CCADB early enough for this to be completed by that date.
 3. Progress of the transition is disclosed in Bugzilla, and this Statement is revised in accordance with [Section 9.12](#912-amendments).
 

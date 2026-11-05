@@ -1,14 +1,15 @@
 # TAIWAN-CA INC. S/MIME Certification Authority Certificate Policy and Certification Practice Statement (TWCA S/MIME CP/CPS)
 
-**(Version 1.0)**
+**(Version 1.1)**
 
-Effective Date: 2026/10/31
+Effective Date: 2026/11/1
 
 ## Document History
 
 | Version | Effective Date | Revision Description |
 | --- | --- | --- |
 | 1.0 | 2026/10/31 | Initial release. The S/MIME portions were extracted from TWCA-CP V2.6 and TWCA GLOBAL CPS V1.9 and consolidated into this newly compiled document. | 
+| 1.1 | 2026/11/1 | 7.1.4.3.3: Stated that TWCA SMIME Root CA G1 is the successor to TWCA Global Root CA G2, and that the point at which the TWCA Global Root CA G2 hierarchy ceases issuing S/MIME Subscriber Certificates, and the subsequent treatment of TWCA Global Root CA G2, will be determined in light of the decisions of the Root Store Programs. |
 
 Table of Contents
 
@@ -1786,6 +1787,8 @@ All operational practices, validation procedures, and certificate and CRL profil
 ##### 7.1.4.3.3 Transition of multi-Trust-Purpose Root CA certificates to single-purpose operation
 
 "TWCA Global Root CA G2" and "TWCA SMIME Root CA G1", the trust anchors of the successor issuance hierarchy set out in [Section 7.1.4.3.2](#71432-certificate-hierarchy-mapping), are dedicated to the S/MIME Trust Purposes.
+
+"TWCA SMIME Root CA G1" is the successor to "TWCA Global Root CA G2". The point at which the "TWCA Global Root CA G2" hierarchy ceases issuing S/MIME Subscriber Certificates, and the subsequent treatment of "TWCA Global Root CA G2", will be determined in light of the decisions of the Root Store Programs; until then, both successor issuance hierarchies operate in accordance with this Statement, and once this is determined, this Statement is revised in accordance with [Section 9.12](#912-amendments).
 
 "TWCA Global Root CA", the trust anchor of the current issuance hierarchy, is in addition to the S/MIME Trust Purposes covered by this Statement also the starting point of the trust path for the Company's TLS hierarchy (whose operational practices are set out in the Company's separately published "TAIWAN-CA INC. CYBER Certification Authority Certificate Policy and Certification Practice Statement (TWCA CYBER CA CP/CPS)"); "TWCA Global Root CA" is also the issuer of the Cross Certificates for "TWCA Global Root CA G2" and "TWCA SMIME Root CA G1"; and "TWCA Root Certification Authority" is the issuer of the Cross Certificate for "TWCA Global Root CA". Those two Root CA certificates are therefore the starting point of the trust path for both Trust Purposes.
 

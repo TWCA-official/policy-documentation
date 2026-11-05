@@ -19,7 +19,7 @@ Superseded versions are kept in the [archive](archive/) folder, named `<Document
 | :--- | :--- | :--- |
 | [TWCA CYBER CP/CPS](archive/TWCA%20CYBER%20CP%20CPS%202.3.md) | 2.3 | 2026/10/31 |
 | [TWCA CP](archive/TWCA%20CP%202.9.md) | 2.9 | 2026/08/10 |
-| [TWCA GLOBAL CPS](archive/TWCA%20GLOBAL%20CPS%203.3.md) | 3.3 | 2026/07/20 |
+| [TWCA GLOBAL CPS](archive/TWCA%20GLOBAL%20CPS%203.3.md) | 3.3 | 2026/11/1 |
 
 ## Contact
 

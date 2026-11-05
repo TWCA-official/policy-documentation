@@ -2,7 +2,7 @@
 
 **(Version 3.3)**
 
-Effective Date: 2026/07/20
+Effective Date: 2026/11/1
 
 ---
 
@@ -23,7 +23,7 @@ Effective Date: 2026/07/20
 | 3.0 | 2025/04/09 | TWCA PMA | Revised in accordance with the "Required Items for Digital Signature Certification Practice Statements" promulgated under the new Electronic Signatures Act. |
 | 3.1 | 2025/12/15 | TWCA PMA | Added verification record validity period description. Added MPIC requirements. Added DNSSEC requirements. |
 | 3.2 | 2026/07/20 | TWCA PMA | Added developer role. Added vulnerability response and remediation timelines. |
-| 3.3 | 2026/08/10 | TWCA PMA | Removed S/MIME certificate-related content, which is now governed by the separately issued TAIWAN-CA INC. S/MIME Certificate Policy and Certification Practice Statement. Removed Section 3.2.3 (Email Mailbox Control Validation) and its subsections, Section 4.2.2.1 (CAA Records Validation), and Section 4.2.2.2 (MPIC); renumbered former Sections 3.2.4 to 3.2.7 as Sections 3.2.3 to 3.2.6. Revised Sections 1.1, 1.2, 1.4.2, 3.1.1, 3.2, 3.2.2, 3.3.1, 4.3.1, 4.9.1.1, 4.9.5, 4.9.13 to 4.9.16, 5.7.1, 6.3.2, 7.1.2, 8.4, 8.5, 8.7, 9.6.1, 9.12.1, 9.15, 9.16.3, and Appendices I and II. Removed Online Certificate Status Protocol (OCSP) provisions, which applied only to S/MIME certificates: Sections 4.9.9 and 7.3 (including 7.3.1 and 7.3.2) now state that OCSP is not provided for the certificate types within the scope of this Statement, and Sections 4.9, 4.9.1.2, 4.9.6, 4.9.10, 4.10.1, 4.10.2 and 9.6.4 were revised to reference the CRL only. Removed from Appendix I the glossary entries for Public Suffix List, Bugzilla, Certification Authority Authorization and Multi-Perspective Issuance Corroboration, and from Appendix II the acronyms CAA, MPIC and TLS BR, all of which became unused. Added to Section 1.1 a declaration of adherence to the CCADB Policy and the root program policies, together with a statement that the scope of this Statement covers InfoSec, AATL and Time-Stamping Certificates. |
+| 3.3 | 2026/11/01 | TWCA PMA | Removed S/MIME certificate-related content, which is now governed by the separately issued TAIWAN-CA INC. S/MIME Certificate Policy and Certification Practice Statement. Removed Section 3.2.3 (Email Mailbox Control Validation) and its subsections, Section 4.2.2.1 (CAA Records Validation), and Section 4.2.2.2 (MPIC); renumbered former Sections 3.2.4 to 3.2.7 as Sections 3.2.3 to 3.2.6. Revised Sections 1.1, 1.2, 1.4.2, 3.1.1, 3.2, 3.2.2, 3.3.1, 4.3.1, 4.9.1.1, 4.9.5, 4.9.13 to 4.9.16, 5.7.1, 6.3.2, 7.1.2, 8.4, 8.5, 8.7, 9.6.1, 9.12.1, 9.15, 9.16.3, and Appendices I and II. Removed Online Certificate Status Protocol (OCSP) provisions, which applied only to S/MIME certificates: Sections 4.9.9 and 7.3 (including 7.3.1 and 7.3.2) now state that OCSP is not provided for the certificate types within the scope of this Statement, and Sections 4.9, 4.9.1.2, 4.9.6, 4.9.10, 4.10.1, 4.10.2 and 9.6.4 were revised to reference the CRL only. Removed from Appendix I the glossary entries for Public Suffix List, Bugzilla, Certification Authority Authorization and Multi-Perspective Issuance Corroboration, and from Appendix II the acronyms CAA, MPIC and TLS BR, all of which became unused. Added to Section 1.1 a declaration of adherence to the CCADB Policy and the root program policies, together with a statement that the scope of this Statement covers InfoSec, AATL and Time-Stamping Certificates. |
 
 ---
 

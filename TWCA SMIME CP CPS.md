@@ -2,7 +2,7 @@
 
 **(Version 1.2)**
 
-Effective Date: 2026/11/27
+Effective Date: 2026/11/30
 
 ## Document History
 
@@ -10,7 +10,7 @@ Effective Date: 2026/11/27
 | --- | --- | --- |
 | 1.0 | 2026/10/31 | Initial release. The S/MIME portions were extracted from TWCA-CP V2.6 and TWCA GLOBAL CPS V1.9 and consolidated into this newly compiled document. | 
 | 1.1 | 2026/11/1 | 7.1.4.3.3: Stated that TWCA SMIME Root CA G1 is the successor to TWCA Global Root CA G2, and that the point at which the TWCA Global Root CA G2 hierarchy ceases issuing S/MIME Subscriber Certificates, and the subsequent treatment of TWCA Global Root CA G2, will be determined in light of the decisions of the Root Store Programs. |
-| 1.2 | 2026/11/27 | 3.2.2, 3.2.2.1: Validation Records no longer state the version number of the BR or the TLS BR on which the validation method is based (S/MIME BR 1.0.17, TLS BR 2.2.7). 7.1.4.3: The S/MIME issuance hierarchy consists solely of TWCA SMIME Root CA G1 and the TWCA SMIME Certification Authority it issued; TWCA Global Root CA G2 has ceased issuance; removed TWCA InfoSec User CA and added a note to the scope statement that, although its certificate contains id-kp-emailProtection, it does not issue S/MIME Subscriber Certificates and is governed by the TWCA GLOBAL CA CPS; the scope statement now refers to Subscriber Certificates containing id-kp-emailProtection. |
+| 1.2 | 2026/11/30 | 3.2.2, 3.2.2.1: Validation Records no longer state the version number of the BR or the TLS BR on which the validation method is based (S/MIME BR 1.0.17, TLS BR 2.2.7). 7.1.4.3: The S/MIME issuance hierarchy consists solely of TWCA SMIME Root CA G1 and the TWCA SMIME Certification Authority it issued; TWCA Global Root CA G2 has ceased issuance; removed TWCA InfoSec User CA and added a note to the scope statement that, although its certificate contains id-kp-emailProtection, it does not issue S/MIME Subscriber Certificates and is governed by the TWCA GLOBAL CA CPS; the scope statement now refers to Subscriber Certificates containing id-kp-emailProtection. |
 
 Table of Contents
 

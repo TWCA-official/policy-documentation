@@ -7,7 +7,7 @@ Public repository and archive of the Certificate Policies (CP) and Certification
 | Document | Version | Effective Date |
 | :--- | :--- | :--- |
 | [TWCA CYBER CP/CPS](TWCA%20CYBER%20CP%20CPS.md) (TLS server certificates) | 2.3.1 | 2026/11/1 |
-| [TWCA S/MIME CP/CPS](TWCA%20SMIME%20CP%20CPS.md) (S/MIME certificates) | 1.2 | 2026/11/27 |
+| [TWCA S/MIME CP/CPS](TWCA%20SMIME%20CP%20CPS.md) (S/MIME certificates) | 1.2 | 2026/11/30 |
 
 The files in the root of this repository are always the current versions. The full change history of each document is recorded in its "Document History" section and in the commit history of this repository.
 

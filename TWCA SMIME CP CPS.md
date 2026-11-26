@@ -1,8 +1,8 @@
 # TAIWAN-CA INC. S/MIME Certification Authority Certificate Policy and Certification Practice Statement (TWCA S/MIME CP/CPS)
 
-**(Version 1.1)**
+**(Version 1.2)**
 
-Effective Date: 2026/11/1
+Effective Date: 2026/11/30
 
 ## Document History
 
@@ -10,6 +10,7 @@ Effective Date: 2026/11/1
 | --- | --- | --- |
 | 1.0 | 2026/10/31 | Initial release. The S/MIME portions were extracted from TWCA-CP V2.6 and TWCA GLOBAL CPS V1.9 and consolidated into this newly compiled document. | 
 | 1.1 | 2026/11/1 | 7.1.4.3.3: Stated that TWCA SMIME Root CA G1 is the successor to TWCA Global Root CA G2, and that the point at which the TWCA Global Root CA G2 hierarchy ceases issuing S/MIME Subscriber Certificates, and the subsequent treatment of TWCA Global Root CA G2, will be determined in light of the decisions of the Root Store Programs. |
+| 1.2 | 2026/11/30 | 3.2.2, 3.2.2.1: Validation Records no longer state the version number of the BR or the TLS BR on which the validation method is based (S/MIME BR 1.0.17, TLS BR 2.2.7). 7.1.4.3: The S/MIME issuance hierarchy consists solely of TWCA SMIME Root CA G1 and the TWCA SMIME Certification Authority it issued; TWCA Global Root CA G2 has ceased issuance; removed TWCA InfoSec User CA and added a note to the scope statement that, although its certificate contains id-kp-emailProtection, it does not issue S/MIME Subscriber Certificates and is governed by the TWCA GLOBAL CA CPS; the scope statement now refers to Subscriber Certificates containing id-kp-emailProtection. 7.1.2.3: Removed from the English version the footnote on Authority Information Access, which had no counterpart in the Chinese version. |
 
 Table of Contents
 
@@ -296,7 +297,7 @@ The Public Key contained in the certificate and the corresponding Private Key sh
 
 ### 3.2.2 Validation of mailbox authorization or control
 
-Validation of mailbox authorization or control must be performed. The validation method is "validating authority over mailbox via domain" or "validating control over mailbox via email" to confirm that the certificate Applicant has authority over or control of the Mailbox Address. For every domain or Mailbox Address in issued certificates, the Validation Record states the validation method used, including the relevant version number of the BR or the TLS Baseline Requirements on which that method is based.
+Validation of mailbox authorization or control must be performed. The validation method is "validating authority over mailbox via domain" or "validating control over mailbox via email" to confirm that the certificate Applicant has authority over or control of the Mailbox Address. For every domain or Mailbox Address in issued certificates, the Validation Record states the validation method used.
 
 The validity period of validation data shall comply with the following requirements:
 - Validating authority over mailbox via domain: The period from completion of validation to certificate issuance shall not exceed 398 days.
@@ -315,7 +316,7 @@ This Certification Center validates the Applicant's domain name (the domain port
 
 This Certification Center uses only the three validation methods listed in the table above. This Certification Center does not provide an Automated Certificate Management Environment (ACME, as defined in [RFC 8555](https://datatracker.ietf.org/doc/html/rfc8555)) service, and does not assign ACME account identifiers (`accounturi`).
 
-In accordance with [SBR Section 3.2.2](https://cabforum.org/working-groups/smime/requirements/#322-validation-of-mailbox-authorization-or-control), all Validation Records of this Certification Center include the applied Fully Qualified Domain Name (FQDN), the validation method used, the Authorization Domain Name for which verification was completed, and the TLS BR version followed. Of the validation methods above, Email to a Constructed Address (TLS BR Section 3.2.2.4.4) and DNS Change Validation (TLS BR Section 3.2.2.4.7) may prune domain labels as permitted by TLS BR Section 3.2.2.4, using the Public Suffix List to determine the Base Domain Name as the limit of pruning; Website Change Validation (TLS BR Section 3.2.2.4.18) does not prune.
+In accordance with [SBR Section 5.4.1](https://cabforum.org/working-groups/smime/requirements/#541-types-of-events-recorded), all Validation Records of this Certification Center include the applied Fully Qualified Domain Name (FQDN), the validation method used, and the Authorization Domain Name for which verification was completed. Of the validation methods above, Email to a Constructed Address (TLS BR Section 3.2.2.4.4) and DNS Change Validation (TLS BR Section 3.2.2.4.7) may prune domain labels as permitted by TLS BR Section 3.2.2.4, using the Public Suffix List to determine the Base Domain Name as the limit of pruning; Website Change Validation (TLS BR Section 3.2.2.4.18) does not prune.
 
 When performing the domain validation, this Certification Center's Primary Network Perspective DNS resolver used for querying DNS records must establish a validation chain to the IANA DNSSEC root trust anchor and perform DNSSEC validation.
 
@@ -1615,7 +1616,7 @@ For Subordinate CA certificates issued by this Certification Center, their exten
 
 Extensions other than those listed above are not used by this Certification Center.
 
-The following two Cross Certificates listed in Section 7.1.4.3.2 were issued before the BR took effect on September 1, 2023 (the certificate issued by TWCA Root Certification Authority to TWCA Global Root CA on October 28, 2014, and the certificate issued by TWCA Global Root CA to TWCA Global Root CA G2 on December 9, 2022) and retain their original content: their basicConstraints extension sets cA to true and does not set pathLenConstraint; they contain no extKeyUsage extension; their certificatePolicies extension contains only anyPolicy with an id-qt-cps qualifier; and their authorityInformationAccess extension contains only the id-ad-ocsp access method. Cross Certificates issued on or after September 1, 2023, including the Cross Certificate issued by TWCA Global Root CA to TWCA SMIME Root CA G1, conform to this section.
+The Cross Certificate listed in Section 7.1.4.3.2 that was issued by TWCA Root Certification Authority to TWCA Global Root CA was issued before the BR took effect on September 1, 2023 (on October 28, 2014) and retains its original content: its basicConstraints extension sets cA to true and does not set pathLenConstraint; it contains no extKeyUsage extension; its certificatePolicies extension contains only anyPolicy with an id-qt-cps qualifier; and its authorityInformationAccess extension contains only the id-ad-ocsp access method. Cross Certificates issued on or after September 1, 2023, including the Cross Certificate issued by TWCA Global Root CA to TWCA SMIME Root CA G1, conform to this section.
 
 #### 7.1.2.3 Subscriber certificates
 
@@ -1627,13 +1628,11 @@ The Extension settings for Subscriber Certificates issued by the Subordinate CA 
 | subjectKeyIdentifier | Non-critical | Uses the SHA-1 or SHA-256 algorithm. |
 | cRLDistributionPoints | Non-critical | Contains the CRL download location; every URI uses the HTTP scheme. |
 | subjectAltName | Non-critical | MUST and can only contain `rfc822Name` representing subscriber's Mailbox Address; this Certification Center does not use the `otherName` of type `id-on-SmtpUTF8Mailbox` permitted by [BR Section 7.1.4.2.1](https://cabforum.org/working-groups/smime/requirements/#71421-subject-alternative-name-extension). |
-| authorityInformationAccess* | Non-critical | Contains CA Issuers (accessMethod=1.3.6.1.5.5.7.48.2) (required), Online Certificate Status Protocol (accessMethod=1.3.6.1.5.5.7.48.1) (optional); every URI uses the HTTP scheme. |
+| authorityInformationAccess | Non-critical | Contains CA Issuers (accessMethod=1.3.6.1.5.5.7.48.2) (required), Online Certificate Status Protocol (accessMethod=1.3.6.1.5.5.7.48.1) (optional); every URI uses the HTTP scheme. |
 | certificatePolicies | Non-critical | Contains certificatePolicies:policyIdentifier, with the values specified in [Section 7.1.6.4](#7164-subscriber-certificates); no policyQualifiers are included. |
 | basicConstraints | Non-critical | cA=false; pathLenConstraint is not set. |
 | keyUsage | Critical | Depends on the certificate profile and key algorithm:<br>**1. Strict Profile**<br>- RSA keys: digitalSignature, keyEncipherment; dataEncipherment MUST NOT be present.<br>- ECC keys: digitalSignature, keyAgreement; keyEncipherment MUST NOT be present.<br>**2. Multipurpose Profile**<br>- RSA keys: digitalSignature, nonRepudiation (optional), keyEncipherment, dataEncipherment (optional).<br>- ECC keys: digitalSignature, nonRepudiation (optional), keyAgreement (optional); keyEncipherment MUST NOT be present.<br>**3. EdDSA keys (same for the Strict and Multipurpose Profiles)**<br>- EdDSA keys (Ed25519, Ed448): digitalSignature, nonRepudiation (optional).<br>No other bit positions are set for any profile or key algorithm (per item e of [BR Section 7.1.2.3](https://cabforum.org/working-groups/smime/requirements/#7123-subscriber-certificates)). |
 | extKeyUsage | Non-critical | Depends on the certificate profile:<br>- Strict Profile: emailProtection (1.3.6.1.5.5.7.3.4) only; clientAuth MUST NOT be present.<br>- Multipurpose Profile: emailProtection (1.3.6.1.5.5.7.3.4) (required), clientAuth (1.3.6.1.5.5.7.3.2) (optional). |
-
-\* Authority Information Access: Starting from March 15, 2024, the Online Certificate Status Protocol is no longer required information.
 
 #### 7.1.2.4 All certificates
 
@@ -1700,7 +1699,7 @@ The table below lists only the attributes actually used by this Certification Ce
 
 Note 1: Field definitions are primarily governed by BR Section 7.1.4, and the certificate policy field must contain the Organization-validated OID defined by CA/B in [Section 7.1.6.4](#7164-subscriber-certificates) of this document.
 
-Note 2: Pursuant to BR Section 7.1.4.2.4, Organization-validated certificates SHALL NOT contain `givenName`, `surname`, `pseudonym`, and `title` attributes.
+Note 2: Pursuant to BR Section 7.1.4.2.4, Organization-validated certificates SHALL NOT contain `givenName`, `surname`, `pseudonym`, or `title` attributes.
 
 ##### 7.1.4.2.3 Subject DN attributes for mailbox-validated profile
 
@@ -1730,7 +1729,6 @@ The Distinguished Names of the Subordinate CA certificates are:
 
 | Distinguished Name (DN) |
 |-------------------------|
-| C=TW, O=TAIWAN-CA Inc., OU=User CA, CN=TWCA InfoSec User CA |
 | C=TW, O=TAIWAN-CA, CN=TWCA SMIME Certification Authority |
 
 The Distinguished Names of the Root Certification Authority (RCA) certificates are:
@@ -1746,29 +1744,17 @@ The Distinguished Names of the Root Certification Authority (RCA) certificates a
 
 The trust paths and scope of applicability of the certificate hierarchy governed by this Statement are as follows.
 
-**Current issuance hierarchy**
-
-| Tier | Certificate Common Name (CN) | Description |
-|---|---|---|
-| Root Certification Authority (RCA) | TWCA Global Root CA | Self-signed certificate; the trust anchor of the current S/MIME issuance hierarchy. |
-| Subordinate CA | TWCA InfoSec User CA | Issued by "TWCA Global Root CA". Currently issues S/MIME certificates (Organization-validated type, in both the multipurpose and strict profiles). |
-| Subscriber Certificate (EE) | — | Profiles are set out in [Section 7.1.2.3](#7123-subscriber-certificates) and [Section 7.1.4.2](#7142-subject-information-subscriber-certificates). |
-
-**Successor issuance hierarchy**
-
-Issuance of S/MIME certificates is being migrated from the current issuance hierarchy to the following hierarchy:
-
-| Tier | Certificate Common Name (CN) | Description |
-|---|---|---|
-| Root Certification Authority (RCA) | TWCA Global Root CA G2 | Self-signed certificate, dedicated to the S/MIME Trust Purposes. |
-| Subordinate CA | TWCA InfoSec User CA | Issued by "TWCA Global Root CA G2". |
-| Subscriber Certificate (EE) | — | Profiles are set out in [Section 7.1.2.3](#7123-subscriber-certificates) and [Section 7.1.4.2](#7142-subject-information-subscriber-certificates). |
+**Issuance hierarchy**
 
 | Tier | Certificate Common Name (CN) | Description |
 |---|---|---|
 | Root Certification Authority (RCA) | TWCA SMIME Root CA G1 | Self-signed certificate, dedicated to the S/MIME Trust Purposes. |
-| Subordinate CA | TWCA SMIME Certification Authority | Issued by "TWCA SMIME Root CA G1". |
+| Subordinate CA | TWCA SMIME Certification Authority | Issued by "TWCA SMIME Root CA G1". Currently issues S/MIME certificates (Organization-validated type, in both the multipurpose and strict profiles). |
 | Subscriber Certificate (EE) | — | Profiles are set out in [Section 7.1.2.3](#7123-subscriber-certificates) and [Section 7.1.4.2](#7142-subject-information-subscriber-certificates). |
+
+**Root CA that has ceased issuance**
+
+"TWCA Global Root CA G2" has ceased issuing S/MIME certificates; no valid Subordinate CA certificate exists under it, and it no longer issues any Subordinate CA certificate; the Cross Certificate issued by "TWCA Global Root CA" to "TWCA Global Root CA G2" has also been revoked. Until its trust is removed by the Root Store Programs, this Certification Center continues to manage that Root CA certificate and its key in accordance with this Statement.
 
 **Cross Certificates**
 
@@ -1776,28 +1762,27 @@ To extend the compatibility of the trust path, this Certification Center also is
 
 | Subject of the Cross Certificate | Issuer of the Cross Certificate |
 |---|---|
-| TWCA Global Root CA G2 | TWCA Global Root CA |
 | TWCA SMIME Root CA G1 | TWCA Global Root CA |
 | TWCA Global Root CA | TWCA Root Certification Authority |
 
 **Scope of applicability**
 
-All operational practices, validation procedures, and certificate and CRL profiles set out in this Statement apply to each Root CA certificate and each Subordinate CA certificate listed in [Section 7.1.4.3.1](#71431-subject-distinguished-name-fields) (including the Cross Certificates listed above), and to all S/MIME Subscriber Certificates issued by them. Every certificate containing the `id-kp-emailProtection` Extended Key Usage is issued and managed in accordance with this Statement. This Statement does not cover any CA certificate outside the foregoing lists.
+All operational practices, validation procedures, and certificate and CRL profiles set out in this Statement apply to each Root CA certificate and each Subordinate CA certificate listed in [Section 7.1.4.3.1](#71431-subject-distinguished-name-fields) (including the Cross Certificates listed above), and to all S/MIME Subscriber Certificates issued by them. Every Subscriber Certificate containing the `id-kp-emailProtection` Extended Key Usage is issued and managed in accordance with this Statement. This Statement does not cover any CA certificate outside the foregoing lists.
+
+**Note**: The certificate of the Subordinate CA "TWCA InfoSec User CA", issued by "TWCA Global Root CA", contains the `id-kp-emailProtection` Extended Key Usage; however, that CA does not issue S/MIME Subscriber Certificates, is not within the scope of this Statement, and is governed by the Company's separately published "TAIWAN-CA INC. GLOBAL Certification Authority Certification Practice Statement (TWCA GLOBAL CA CPS)"; the matters for which that CA certificate is subject to the S/MIME BR are set out in Section 1.1 of that Statement. All S/MIME Subscriber Certificates previously issued by that CA have been revoked, and status information for them is provided in accordance with [Section 4.9](#49-certificate-revocation-and-suspension) and Section 4.10 of this Statement until they expire.
 
 ##### 7.1.4.3.3 Transition of multi-Trust-Purpose Root CA certificates to single-purpose operation
 
-"TWCA Global Root CA G2" and "TWCA SMIME Root CA G1", the trust anchors of the successor issuance hierarchy set out in [Section 7.1.4.3.2](#71432-certificate-hierarchy-mapping), are dedicated to the S/MIME Trust Purposes.
+"TWCA SMIME Root CA G1", the trust anchor of the issuance hierarchy set out in [Section 7.1.4.3.2](#71432-certificate-hierarchy-mapping), is dedicated to the S/MIME Trust Purposes.
 
-"TWCA SMIME Root CA G1" is the successor to "TWCA Global Root CA G2". The point at which the "TWCA Global Root CA G2" hierarchy ceases issuing S/MIME Subscriber Certificates, and the subsequent treatment of "TWCA Global Root CA G2", will be determined in light of the decisions of the Root Store Programs; until then, both successor issuance hierarchies operate in accordance with this Statement, and once this is determined, this Statement is revised in accordance with [Section 9.12](#912-amendments).
-
-"TWCA Global Root CA", the trust anchor of the current issuance hierarchy, is in addition to the S/MIME Trust Purposes covered by this Statement also the starting point of the trust path for the Company's TLS hierarchy (whose operational practices are set out in the Company's separately published "TAIWAN-CA INC. CYBER Certification Authority Certificate Policy and Certification Practice Statement (TWCA CYBER CA CP/CPS)"); "TWCA Global Root CA" is also the issuer of the Cross Certificates for "TWCA Global Root CA G2" and "TWCA SMIME Root CA G1"; and "TWCA Root Certification Authority" is the issuer of the Cross Certificate for "TWCA Global Root CA". Those two Root CA certificates are therefore the starting point of the trust path for both Trust Purposes.
+"TWCA Global Root CA" is the issuer of the Cross Certificate for "TWCA SMIME Root CA G1" and is also the starting point of the trust path for the Company's TLS hierarchy (whose operational practices are set out in the Company's separately published "TAIWAN-CA INC. CYBER Certification Authority Certificate Policy and Certification Practice Statement (TWCA CYBER CA CP/CPS)"); "TWCA Root Certification Authority" is the issuer of the Cross Certificate for "TWCA Global Root CA". Those two Root CA certificates are therefore the starting point of the trust path for both Trust Purposes.
 
 This Certification Center proceeds as follows:
 
-1. Issuance of S/MIME certificates is migrated to the successor issuance hierarchy set out in [Section 7.1.4.3.2](#71432-certificate-hierarchy-mapping). Under [Section 6.1.5](#615-key-sizes), from September 15, 2027 a CA certificate whose RSA key has a modulus length of less than 3072 bits no longer issues S/MIME Subscriber Certificates containing `emailProtection`; this Certification Center completes the migration in line with that timetable.
+1. S/MIME Subscriber Certificates are issued only by the Subordinate CA of the issuance hierarchy set out in [Section 7.1.4.3.2](#71432-certificate-hierarchy-mapping).
 2. By December 31, 2028, one of the trust bits of "TWCA Root Certification Authority" and "TWCA Global Root CA" is removed, or those root certificates are sunset; the related requests are submitted to the CCADB early enough for this to be completed by that date.
-3. Until the migration is complete, this Certification Center operates each Trust Purpose associated with those two Root CA certificates in accordance with this Statement and with the TWCA CYBER CA CP/CPS respectively.
-4. Progress of the migration is disclosed in Bugzilla, and this Statement is revised in accordance with [Section 9.12](#912-amendments).
+3. Until the action in item 2 is complete, this Certification Center operates each Trust Purpose associated with those two Root CA certificates in accordance with this Statement, the TWCA CYBER CA CP/CPS and the TWCA GLOBAL CA CPS respectively.
+4. Progress of the action in item 2 is disclosed in Bugzilla, and this Statement is revised in accordance with [Section 9.12](#912-amendments).
 
 ### 7.1.5 Name constraints
 

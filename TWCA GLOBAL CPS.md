@@ -1,8 +1,8 @@
 # TAIWAN-CA INC. GLOBAL Certification Authority Certification Practice Statement (TWCA GLOBAL CA CPS)
 
-**(Version 3.3)**
+**(Version 3.4)**
 
-Effective Date: 2026/11/1
+Effective Date: 2026/11/30
 
 ---
 
@@ -24,6 +24,7 @@ Effective Date: 2026/11/1
 | 3.1 | 2025/12/15 | TWCA PMA | Added verification record validity period description. Added MPIC requirements. Added DNSSEC requirements. |
 | 3.2 | 2026/07/20 | TWCA PMA | Added developer role. Added vulnerability response and remediation timelines. |
 | 3.3 | 2026/11/01 | TWCA PMA | Removed S/MIME certificate-related content, which is now governed by the separately issued TAIWAN-CA INC. S/MIME Certificate Policy and Certification Practice Statement. Removed Section 3.2.3 (Email Mailbox Control Validation) and its subsections, Section 4.2.2.1 (CAA Records Validation), and Section 4.2.2.2 (MPIC); renumbered former Sections 3.2.4 to 3.2.7 as Sections 3.2.3 to 3.2.6. Revised Sections 1.1, 1.2, 1.4.2, 3.1.1, 3.2, 3.2.2, 3.3.1, 4.3.1, 4.9.1.1, 4.9.5, 4.9.13 to 4.9.16, 5.7.1, 6.3.2, 7.1.2, 8.4, 8.5, 8.7, 9.6.1, 9.12.1, 9.15, 9.16.3, and Appendices I and II. Removed Online Certificate Status Protocol (OCSP) provisions, which applied only to S/MIME certificates: Sections 4.9.9 and 7.3 (including 7.3.1 and 7.3.2) now state that OCSP is not provided for the certificate types within the scope of this Statement, and Sections 4.9, 4.9.1.2, 4.9.6, 4.9.10, 4.10.1, 4.10.2 and 9.6.4 were revised to reference the CRL only. Removed from Appendix I the glossary entries for Public Suffix List, Bugzilla, Certification Authority Authorization and Multi-Perspective Issuance Corroboration, and from Appendix II the acronyms CAA, MPIC and TLS BR, all of which became unused. Added to Section 1.1 a declaration of adherence to the CCADB Policy and the root program policies, together with a statement that the scope of this Statement covers InfoSec, AATL and Time-Stamping Certificates. |
+| 3.4 | 2026/11/30 | TWCA PMA | (1) Sections 1.1 and 3.1.1: stated that TWCA InfoSec User CA is governed by this Statement and does not issue S/MIME Certificates, and that the Subscriber Certificates it issues contain neither the id-kp-emailProtection Extended Key Usage nor an rfc822Name; because that CA certificate contains id-kp-emailProtection, it remains within the scope of the S/MIME BR audit. (2) Section 1.4.2: removed "email applications". (3) Section 3.1.1: removed TWCA Global Root CA G2 (no valid Subordinate CA certificate remains under it) and noted that it is managed under the S/MIME Certificate Policy and Certification Practice Statement. |
 
 ---
 
@@ -107,6 +108,8 @@ In addition to domestic laws and regulations, and in order to ensure the global 
 - **Root Program Policies**: Including but not limited to the [Chrome Root Program Policy](https://googlechrome.github.io/chromerootprogram/), the [Microsoft Trusted Root Program Requirements](https://github.com/TrustedRootProgram/Program-Requirements/blob/main/Requirements.md), the [Mozilla Root Store Policy](https://www.mozilla.org/en-US/about/governance/policies/security-group/certs/policy/), and the [Apple Root Program Policy](https://github.com/apple/apple-root-program/blob/main/policy.md).
 
 The scope of this Statement covers the InfoSec Certificates, AATL Certificates, and Time-Stamping Certificates issued by this Certification Center. TLS Certificates are governed by the TAIWAN-CA INC. CYBER Certification Authority Certificate Policy and Certification Practice Statement, and S/MIME Certificates are governed by the TAIWAN-CA INC. S/MIME Certificate Policy and Certification Practice Statement; neither is within the scope of this Statement.
+
+InfoSec Certificates and AATL Certificates are issued by the Subordinate CA "TWCA InfoSec User CA", which is governed by this Statement. "TWCA InfoSec User CA" does not issue S/MIME Certificates: no Subscriber Certificate it issues contains the `id-kp-emailProtection` Extended Key Usage, and none contains an rfc822Name in its subjectAltName, so none of them is an S/MIME Certificate as defined in Section 1.1 of the Baseline Requirements for the Issuance and Management of Publicly-Trusted S/MIME Certificates (S/MIME BR). However, the CA certificate of "TWCA InfoSec User CA" itself contains the `id-kp-emailProtection` Extended Key Usage; that CA certificate therefore remains within the scope of Section 1.1 of the Mozilla Root Store Policy and within the scope of the S/MIME BR audit, and its issuance, profile, revocation and certificate status information are handled in accordance with the latest version of the S/MIME BR.
 
 To establish a secure and trustworthy online transaction environment and ensure that information is not easily forged, tampered with, or stolen during network transmission, the Company has specifically planned and built an Internet certification service system with certification-related security mechanisms, using public key cryptography. Its security control mechanisms meet the security standards of the Financial Supervisory Commission's "Operational Standards for Security Controls of Electronic Banking Operations by Financial Institutions," providing non-repudiation of network transaction messages, authentication of Subscriber identity, verification of message integrity, encryption of messages, and other security control mechanisms. It can be used for Internet electronic banking, online trading, as well as online tax filing, insurance, bills and bonds, corporate inquiry and quotation, procurement and payment transactions, and other Internet e-commerce application trading systems.
 
@@ -217,7 +220,7 @@ The meaning of each segment is as follows:
 | First Segment | Identity Authentication Security Level | Class 1 / Class 2 / Class 3 / Test Certificate |
 | Second Segment | Usage Type | Single-purpose / Limited-scope multi-purpose |
 | Third Segment | Subscriber Identity | Legal entity / Natural person |
-| Fourth Segment | Applicable Business Scope | (1) Financial transactions, e-commerce applications, online tax filing, electronic invoices, electronic communication voting, short-term bill issuance and trading applications; (2) Securities trading, e-commerce applications, online tax filing, electronic invoices, electronic communication voting; (3) E-commerce applications, online identity verification, online tax filing, electronic invoices, electronic communication voting, online patent and trademark applications, email applications, code signing, PDF document signing, Time-Stamp for digital signatures on electronic documents or messages |
+| Fourth Segment | Applicable Business Scope | (1) Financial transactions, e-commerce applications, online tax filing, electronic invoices, electronic communication voting, short-term bill issuance and trading applications; (2) Securities trading, e-commerce applications, online tax filing, electronic invoices, electronic communication voting; (3) E-commerce applications, online identity verification, online tax filing, electronic invoices, electronic communication voting, online patent and trademark applications, code signing, PDF document signing, Time-Stamp for digital signatures on electronic documents or messages |
 
 **First Segment** -- Identity Authentication Security Level:
 
@@ -236,7 +239,7 @@ Classified as (1) Legal entity or (2) Natural person.
 
 **Fourth Segment** -- Applicable Business Scope:
 
-Classified as (1) Financial transactions, e-commerce applications, online tax filing, electronic invoices, electronic communication voting, short-term bill issuance and trading applications; (2) Securities trading, e-commerce applications, online tax filing, electronic invoices, electronic communication voting; (3) E-commerce applications, online identity verification, online tax filing, electronic invoices, electronic communication voting, online patent and trademark applications, email applications, code signing, PDF document signing, Time-Stamp for digital signatures on electronic documents or messages. Certificates for financial transactions may also be used for securities trading and e-commerce applications and online identity verification, subject to usage scope restrictions or with the Company's consent.
+Classified as (1) Financial transactions, e-commerce applications, online tax filing, electronic invoices, electronic communication voting, short-term bill issuance and trading applications; (2) Securities trading, e-commerce applications, online tax filing, electronic invoices, electronic communication voting; (3) E-commerce applications, online identity verification, online tax filing, electronic invoices, electronic communication voting, online patent and trademark applications, code signing, PDF document signing, Time-Stamp for digital signatures on electronic documents or messages. Certificates for financial transactions may also be used for securities trading and e-commerce applications and online identity verification, subject to usage scope restrictions or with the Company's consent.
 
 Example: The current usage scope code for enterprise online banking certificates is 3.1.1.1, interpreted as follows:
 
@@ -259,8 +262,8 @@ The certificate usage scope and liability table is shown below:
 |-----------------|----------------|------------|--------------------|--------------------------|--------------------|-------------------|
 | 1.1.1.3 | Class 1 | Single-purpose | Legal entity | E-commerce applications, online identity verification | 3,000 | 3,000 |
 | 1.1.2.3 | Class 1 | Single-purpose | Natural person | E-commerce applications, online identity verification | 3,000 | 3,000 |
-| 2.1.1.3 | Class 2 | Single-purpose | Legal entity | E-commerce applications, online identity verification, email applications, PDF document signing | 900,000 | 300,000 |
-| 2.1.2.3 | Class 2 | Single-purpose | Natural person | E-commerce applications, online identity verification, email applications, PDF document signing | 300,000 | 100,000 |
+| 2.1.1.3 | Class 2 | Single-purpose | Legal entity | E-commerce applications, online identity verification, PDF document signing | 900,000 | 300,000 |
+| 2.1.2.3 | Class 2 | Single-purpose | Natural person | E-commerce applications, online identity verification, PDF document signing | 300,000 | 100,000 |
 | 3.1.1.1 | Class 3 | Single-purpose | Legal entity | Financial transactions | Unlimited | 2,000,000 |
 | 3.2.1.1 | Class 3 | Limited-scope multi-purpose | Legal entity | Financial transactions, e-commerce applications, online tax filing, electronic invoices, electronic communication voting, short-term bill issuance and trading applications | Unlimited | 2,000,000 |
 | 3.1.2.1 | Class 3 | Single-purpose | Natural person | Financial transactions | Unlimited | 300,000 |
@@ -269,10 +272,10 @@ The certificate usage scope and liability table is shown below:
 | 3.2.1.2 | Class 3 | Limited-scope multi-purpose | Legal entity | Securities trading, e-commerce applications, online tax filing, electronic invoices, electronic communication voting | 100,000,000 | 2,000,000 |
 | 3.1.2.2 | Class 3 | Single-purpose | Natural person | Securities trading | 15,000,000 | 300,000 |
 | 3.2.2.2 | Class 3 | Limited-scope multi-purpose | Natural person | Securities trading, e-commerce applications, online tax filing, electronic communication voting | 15,000,000 | 300,000 |
-| 3.1.1.3 | Class 3 | Single-purpose | Legal entity | E-commerce applications, online identity verification, online patent and trademark applications, code signing, PDF document signing, Time-Stamp for digital signatures on electronic documents or messages, email applications | 20,000,000 | 2,000,000 |
-| 3.2.1.3 | Class 3 | Limited-scope multi-purpose | Legal entity | E-commerce applications, online identity verification, online tax filing, electronic invoices, electronic communication voting, PDF document signing, email applications | 20,000,000 | 2,000,000 |
-| 3.1.2.3 | Class 3 | Single-purpose | Natural person | E-commerce applications, online identity verification, online patent and trademark applications, code signing, PDF document signing, email applications | 2,000,000 | 300,000 |
-| 3.2.2.3 | Class 3 | Limited-scope multi-purpose | Natural person | E-commerce applications, online identity verification, online tax filing, electronic communication voting, PDF document signing, email applications | 2,000,000 | 300,000 |
+| 3.1.1.3 | Class 3 | Single-purpose | Legal entity | E-commerce applications, online identity verification, online patent and trademark applications, code signing, PDF document signing, Time-Stamp for digital signatures on electronic documents or messages | 20,000,000 | 2,000,000 |
+| 3.2.1.3 | Class 3 | Limited-scope multi-purpose | Legal entity | E-commerce applications, online identity verification, online tax filing, electronic invoices, electronic communication voting, PDF document signing | 20,000,000 | 2,000,000 |
+| 3.1.2.3 | Class 3 | Single-purpose | Natural person | E-commerce applications, online identity verification, online patent and trademark applications, code signing, PDF document signing | 2,000,000 | 300,000 |
+| 3.2.2.3 | Class 3 | Limited-scope multi-purpose | Natural person | E-commerce applications, online identity verification, online tax filing, electronic communication voting, PDF document signing | 2,000,000 | 300,000 |
 
 Note 1: If the usage scope code contained in a certificate is not listed in the table above, that certificate shall not be used for any application or business other than testing, and the Company shall bear no compensation liability for such certificate.
 
@@ -399,6 +402,8 @@ This Certification Center issues X.509 certificates with subject names in X.501 
 | OrganizationUnit (OU) | OU=User CA |
 | CommonName (CN) | CN=TWCA InfoSec User CA |
 
+"TWCA InfoSec User CA" is issued by "TWCA Global Root CA" and issues InfoSec Certificates and AATL Certificates; it does not issue S/MIME Certificates. Its CA certificate contains the `id-kp-emailProtection` Extended Key Usage; see [Section 1.1](#11-overview).
+
 **(2) Time-Stamping UCA Certificate**
 
 | Distinguished Name (DN) | Description |
@@ -426,14 +431,7 @@ Or:
 | OrganizationUnit (OU) | OU=Root CA |
 | CommonName (CN) | CN=TWCA Global Root CA |
 
-Or:
-
-| Distinguished Name (DN) | Description |
-|---|---|
-| CountryName (C) | C=TW |
-| Organization (O) | O=TAIWAN-CA |
-| OrganizationUnit (OU) | OU=Root CA |
-| CommonName (CN) | CN=TWCA Global Root CA G2 |
+The Root CA "TWCA Global Root CA G2" has ceased issuance and no valid Subordinate CA certificate remains under it; it is not within the scope of this Statement. That Root CA certificate and its key are managed in accordance with the Company's separately published TAIWAN-CA INC. S/MIME Certificate Policy and Certification Practice Statement.
 
 ### 3.1.2 Need for Names to Be Meaningful
 
